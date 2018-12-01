@@ -5,6 +5,9 @@ $(function () {
     var newsfeed = $('.newsFeed');
     var followBtn = $('.follow');
     var profile = $('.profileName');
+    var editfirstName = $('.firstName');
+    var editlastName = $('.lastName');
+    var saveProfileChanges = $('.remodal-confirm');
 
 
     var getProfile = function () {
@@ -17,11 +20,27 @@ $(function () {
     var displayProfile = function (response) {
         var name = response.firstName;
         var lastName = response.lastName;
-       return profile.text(name + lastName);
+        console.log(response);
+        return profile.text(name + ' ' + lastName);
+    };
+
+    var editProfile = function () {
+        saveProfileChanges.on('click', function () {
+            return $.post('http://146.185.154.90:8000/blog/inalieva.a@gmail.com/profile', {
+                firstName: editfirstName.val(),
+                lastName: editlastName.val()
+            }).then(refreshPage);
+        })
+    };
+
+    var refreshPage = function () {
+        window.location.reload();
     };
 
     getProfile()
         .then(displayProfile)
+        .then(editProfile)
+
 
 //
 //     var showChats = function (answer) {

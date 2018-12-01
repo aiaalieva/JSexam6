@@ -7,21 +7,36 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>task-01</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="Remodal-1.1.1/dist/remodal.css">
+    <link rel="stylesheet" href="Remodal-1.1.1/dist/remodal-default-theme.css">
     <script src="js/jquery-3.3.1.js"></script>
+    <script src="Remodal-1.1.1/dist/remodal.min.js"></script>
     <script src="js/script.js"></script>
 </head>
 <body>
-<div class="container">
-    <p class="profileName"> </p>
-    <i class="fas fa-edit"></i>
-    <button class="follow"> <i class="fas fa-user-plus"></i> Follow user</button>
+<div class="container remodal-bg">
+    <p class="profileName"></p>
+    <a data-remodal-target="modal"> <i class="fas fa-edit"></i></a>
+    <button class="follow"><i class="fas fa-user-plus"></i> Follow user</button>
     <div class="formBlock">
         <input type="text" id="input-message" placeholder="What's happening?">
         <button type="submit" class="send">Send</button>
     </div>
     <div class="newsFeed"></div>
+    <div class="remodal" data-remodal-id="modal">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <h1>Edit Profile</h1>
+        <div class="nameForm">
+            First name: <input type="text" class="firstName">
+            Last name: <input type="text" class="lastName">
+        </div>
+        <br>
+        <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+        <button data-remodal-action="confirm" class="remodal-confirm">Save</button>
+    </div>
 </div>
 
 </body>
