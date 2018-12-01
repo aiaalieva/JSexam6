@@ -21,7 +21,6 @@ $(function () {
     var displayProfile = function (response) {
         var name = response.firstName;
         var lastName = response.lastName;
-        console.log(response);
         return profile.text(name + ' ' + lastName);
     };
 
@@ -55,7 +54,7 @@ $(function () {
             var lastName = response[i].user.lastName;
             var posts = response[i].message;
             var postBlock = $('<div class="postBlock">');
-            postBlock.html(name + ' ' + lastName + ' said: <br>' + posts + '<br>' + response[i].datetime);
+            postBlock.html(name + ' ' + lastName + ' said: <br>' + posts + '<br>');
             newsfeed.prepend(postBlock);
             updatedDatetime = response[i].datetime;
         }
