@@ -18,14 +18,20 @@
 </head>
 <body>
 <div class="container remodal-bg">
+
     <p class="profileName"></p>
-    <a data-remodal-target="modal"> <i class="fas fa-edit"></i></a>
-    <button class="follow"><i class="fas fa-user-plus"></i> Follow user</button>
+
+    <a class="editProfile" data-remodal-target="modal"> <i class="fas fa-edit"></i></a>
+
+    <a class="follow" data-remodal-target="subscribeModal"><i class="fas fa-user-plus"></i> Follow user</a>
+
     <div class="formBlock">
         <input type="text" id="input-message" placeholder="What's happening?">
-        <button type="submit" class="send">Send</button>
+        <a type="submit" class="send">Send</a>
     </div>
+
     <div class="newsFeed"></div>
+
     <div class="remodal" data-remodal-id="modal">
         <button data-remodal-action="close" class="remodal-close"></button>
         <h1>Edit Profile</h1>
@@ -36,6 +42,17 @@
         <br>
         <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
         <button data-remodal-action="confirm" class="remodal-confirm">Save</button>
+    </div>
+
+    <div class="remodal" data-remodal-id="subscribeModal">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <h1>Edit Profile</h1>
+        <div class="emailForm">
+            E-mail: <input type="text" class="email">
+        </div>
+        <br>
+        <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+        <button data-remodal-action="confirm" class="remodal-subscribe">Save</button>
     </div>
 </div>
 

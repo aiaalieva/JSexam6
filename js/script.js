@@ -3,11 +3,12 @@ $(function () {
     var send = $('.send');
     var post = $('#input-message');
     var newsfeed = $('.newsFeed');
-    var followBtn = $('.follow');
+    var followBtn = $('.remodal-subscribe');
     var profile = $('.profileName');
     var editfirstName = $('.firstName');
     var editlastName = $('.lastName');
     var saveProfileChanges = $('.remodal-confirm');
+    var emailField = $('.email');
 
 
     var getProfile = function () {
@@ -72,16 +73,41 @@ $(function () {
         });
     };
 
-    // var getCurrentDatetime = function () {
-    //   var currentDatetime = new Date;
-    //   var updatedDatetime = currentDatetime.toISOString();
-    //     return updatedDatetime;
+    var subscribeRequest = function () {
+        followBtn.on('click', function () {
+            if(emailField.val() === '') {
+                alert('Fileds can\'t be empty')
+            } else {
+                return $.post('http://146.185.154.90:8000/blog/inalieva.a@gmail.com/subscribe', {
+                    email: emailField.val()
+                });
+            }
+        })
+    };
+
+    // var getNewPosts = function () {
+    //     var currentDatetime = new Date;
+    //     var updatedDatetime = currentDatetime.toISOString();
+    //     return $.ajax({
+    //         method: 'GET',
+    //         url: 'http://146.185.154.90:8000/blog/inalieva.a@gmail.com/posts?datetime=' + updatedDatetime
+    //     });
     // };
 
-    // var setLoopInterval = function () {
+    // var showNewPosts = function (response) {
     //     setInterval(function () {
-    //
-    //     }, 2000);
+    //         console.log(response);
+    //         for (var i = 0; i < response.length; i++) {
+    //             if(response[i].datetime > updatedDatetime) {
+    //                 var name = response[i].user.firstName;
+    //                 var lastName = response[i].user.lastName;
+    //                 var posts = response[i].message;
+    //                 var postBlock = $('<div class="postBlock">');
+    //                 postBlock.html(name + ' ' + lastName + ' said: <br>' + posts + '<br>' + response[i].datetime);
+    //                 newsfeed.prepend(postBlock)
+    //             }
+    //         }
+    //     }, 3000);
     // };
 
     getProfile()
@@ -90,7 +116,9 @@ $(function () {
         .then(getPosts)
         .then(showNewsfeed)
         .then(createPost)
-        // .then(getCurrentDatetime)
+        .then(subscribeRequest)
+        // .then(getNewPosts)
+        // .then(showNewPosts)
 
 
 

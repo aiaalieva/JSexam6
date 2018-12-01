@@ -68,10 +68,6 @@ body {
     background-color: #378de5;
 }
 
-.follow:active, .send:active {
-    position: relative;
-    top: 1px;
-}
 .formBlock {
     display: block;
     margin: 20px;
@@ -101,4 +97,25 @@ body {
     padding: 10px;
     margin: 10px 0;
 
+}
+.remodal-subscribe {
+    color: #fff;
+    background: #81c784;  font: inherit;
+
+    display: inline-block;
+    overflow: visible;
+
+    min-width: 110px;
+    margin: 0;
+    padding: 12px 0;
+
+    cursor: pointer;
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+
+    border: 0;
+    outline: 0;
 }
