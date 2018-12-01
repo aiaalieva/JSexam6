@@ -72,6 +72,10 @@ body {
     position: relative;
     top: 1px;
 }
+.formBlock {
+    display: block;
+    margin: 20px;
+}
 
 #input-message {
     width: 85%;
