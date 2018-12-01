@@ -26,10 +26,14 @@ $(function () {
 
     var editProfile = function () {
         saveProfileChanges.on('click', function () {
-            return $.post('http://146.185.154.90:8000/blog/inalieva.a@gmail.com/profile', {
-                firstName: editfirstName.val(),
-                lastName: editlastName.val()
-            }).then(refreshPage);
+            if (editlastName.val() === '' && editfirstName.val() === '') {
+                alert('Fields can\'t be empty');
+            } else {
+                return $.post('http://146.185.154.90:8000/blog/inalieva.a@gmail.com/profile', {
+                    firstName: editfirstName.val(),
+                    lastName: editlastName.val()
+                }).then(refreshPage);
+            }
         })
     };
 
@@ -37,18 +41,50 @@ $(function () {
         window.location.reload();
     };
 
+    var getPosts = function () {
+        return $.ajax({
+            method: 'GET',
+            url: 'http://146.185.154.90:8000/blog/inalieva.a@gmail.com/posts'
+        });
+    };
+
+    var showNewsfeed = function (response) {
+        console.log(response);
+        for(var i = 0; i < response.length; i++) {
+            var name = response[i].user.firstName;
+            var lastName = response[i].user.lastName;
+            var posts = response[i].message;
+            var postBlock = $('<div class="postBlock">');
+            postBlock.html(name + ' ' + lastName + ' said: <br>' + posts + '<br>' + response[i].datetime);
+            newsfeed.prepend(postBlock)
+        }
+    };
+
+    // var setLoopInterval = function () {
+    //     setInterval(function () {
+    //
+    //     }, 2000);
+    // };
+
+    // var createPost = function(){
+    //     send.on('click', function () {
+    //         return $.post('http://146.185.154.90:8000/blog/inalieva.a@gmail.com/posts', {
+    //             message: post.val()
+    //         });
+    //     })
+    //
+    // };
+
     getProfile()
         .then(displayProfile)
         .then(editProfile)
+        .then(getPosts)
+        .then(showNewsfeed)
+
+    // .then(createPost)
 
 
-//
-//     var showChats = function (answer) {
-//         var chats = answer.map(function (message) {
-//             return ('Date: ' + message.datetime + '<br>' + ' Author: ' + message.author + '<br>' + ' Message: ' + message.message + '<br>' + '________' + '<br>');
-//         });
-//         messagesBlock.html(chats.join('<br>'));
-//     };
+
 //
 //     var sendMessage = function(){
 //         return $.post('http://146.185.154.90:8000/messages', {

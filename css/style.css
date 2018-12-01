@@ -90,8 +90,15 @@ body {
     min-height: 20vw;
     border: 1px solid white;
     margin: 20px 0;
+    padding: 20px;
 }
 
 .nameForm {
     margin: 20px;
+}
+.postBlock {
+    border: 1px solid white;
+    padding: 10px;
+    margin: 10px 0;
+
 }
