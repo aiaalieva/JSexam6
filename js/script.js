@@ -50,7 +50,7 @@ $(function () {
 
     var showNewsfeed = function (response) {
         console.log(response);
-        for(var i = 0; i < response.length; i++) {
+        for (var i = 0; i < response.length; i++) {
             var name = response[i].user.firstName;
             var lastName = response[i].user.lastName;
             var posts = response[i].message;
@@ -60,19 +60,28 @@ $(function () {
         }
     };
 
+    var createPost = function () {
+        send.on('click', function () {
+            if (post.val() === '') {
+                alert('Fields can\'t be empty');
+            } else {
+                return $.post('http://146.185.154.90:8000/blog/inalieva.a@gmail.com/posts', {
+                    message: post.val()
+                }).then(post.val(''));
+            }
+        });
+    };
+
+    // var getCurrentDatetime = function () {
+    //   var currentDatetime = new Date;
+    //   var updatedDatetime = currentDatetime.toISOString();
+    //     return updatedDatetime;
+    // };
+
     // var setLoopInterval = function () {
     //     setInterval(function () {
     //
     //     }, 2000);
-    // };
-
-    // var createPost = function(){
-    //     send.on('click', function () {
-    //         return $.post('http://146.185.154.90:8000/blog/inalieva.a@gmail.com/posts', {
-    //             message: post.val()
-    //         });
-    //     })
-    //
     // };
 
     getProfile()
@@ -80,8 +89,8 @@ $(function () {
         .then(editProfile)
         .then(getPosts)
         .then(showNewsfeed)
-
-    // .then(createPost)
+        .then(createPost)
+        // .then(getCurrentDatetime)
 
 
 
