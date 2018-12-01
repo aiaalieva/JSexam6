@@ -6,7 +6,7 @@ body {
 .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
     background-color: #72BCD4;
     color: white;
     position: relative;
@@ -17,6 +17,7 @@ body {
     font-size: 40px;
     font-family: 'Indie Flower', cursive;
     margin: 0;
+    font-weight: bold;
 
 }
 
@@ -53,8 +54,8 @@ body {
 
 .follow {
     position: absolute;
-    top: 20px;
-    right: 10px;
+    top: 30px;
+    right: 20px;
 }
 
 .follow:hover, .send:hover {
@@ -118,4 +119,8 @@ body {
 
     border: 0;
     outline: 0;
+}
+
+.postBlock {
+    font-size: 20px;
 }
